@@ -42,6 +42,18 @@ export default {
       required: false,
       default: null,
     },
+    refreshOnRouteChange: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+  },
+  watch: {
+    '$route.path': function() {
+      if (this.refreshOnRouteChange) {
+        this.refreshSlot();
+      }
+    }
   },
   computed: {
     networkCode() {
